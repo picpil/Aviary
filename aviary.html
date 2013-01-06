@@ -1,0 +1,43 @@
+
+<style type="text/css">
+</style>
+<div id='injection_site'></div>
+
+<img id='image1' src='http://proto.picpil.com/m/pictures/pictures/39fcdb83-24bf-431c-90c9-596b55551876..jpg'/>
+
+        
+<div id="pngHolder"></div>
+<!-- Add an edit button, passing the HTML id of the image and the public URL ot the image -->
+<p><button onclick="return launchEditor('image1', 'http://proto.picpil.com/m/pictures/pictures/39fcdb83-24bf-431c-90c9-596b55551876..jpg');" >Edit</button></p>
+        
+<!-- Load Feather code -->
+<script type="text/javascript">
+  function removeElement(element) {
+    element && element.parentNode && element.parentNode.removeChild(element);
+  }
+  function saveImage(){
+    var realImage = document.getElementById("image1");
+    var canvas = document.getElementById('avpw_canvas_element');
+    var image = new Image();
+    image.src = canvas.toDataURL("image/jpeg");
+    document.getElementById("pngHolder").appendChild(image);
+    removeElement( document.getElementById("avpw_holder"));
+    return true;
+  }
+</script>
+<script type="text/javascript" src="feather.js"></script>
+
+<!-- Instantiate Feather -->
+<script type='text/javascript'>
+   var featherEditor = new Aviary.Feather({
+       apiVersion: 2,
+       tools: 'all',
+   });
+   function launchEditor(id, src) {
+       featherEditor.launch({
+           image: id,
+           url: src
+       });
+      return false;
+   }
+</script>
